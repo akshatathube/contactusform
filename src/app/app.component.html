@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h1 style="text-align: center;color: palevioletred;"><b>Contact Our</b></h1>
+    <h1><b>Customer Support Center</b></h1>
+  </div>
+  <div class="col">
+   <img src="assets/img/2.jpg">
+  </div>
+  </div>
+  <h4 style="text-align: center;">Contact Information</h4>
+  <h5 style="text-align: center;">Please Fill Out Your Contact Information Below</h5>
+  <form [formGroup]="UserForm" (ngSubmit)="onSubmit()">
+   
+    <div class="form-group">
+      &nbsp;<label><b>Your Name*</b></label><br>
+      <div class="row">
+        <div clas="col-xs-6">
+          <input [class.is-invalid] = "UserForm.get('firstname').invalid && UserForm.get('firstname').touched"  type="text"  class="form-control" style=" width:200px; height: 30px; margin-left:20px;" formControlName="firstname">
+         &nbsp;&nbsp;&nbsp;&nbsp;<small>First Name</small>
+        <!---- <small [class.d-none]="UserForm.get('firstname').valid || UserForm.get('firstname').untouched" class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;*First Name Is Required</small>-->
+        <div *ngIf="UserForm.get('firstname').invalid && UserForm.get('firstname').touched">
+          <small *ngIf="UserForm.get('firstname').errors ?. required" class="text-danger">First name is required</small>
+         
+         </div>
+        </div>
+        <div clas="col-xs-6">
+        <input [class.is-invalid] = "UserForm.get('lastname').invalid && UserForm.get('lastname').touched" type="text"class="form-control" style=" width:200px; height: 30px; margin-left:20px;" formControlName="lastname">
+        &nbsp;&nbsp;&nbsp;&nbsp;<small>Last Name</small>
+       <!---- <small [class.d-none]="UserForm.get('lastname').valid || UserForm.get('lastname').untouched" class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;*Last Name Is Required</small>-->
+       <div *ngIf="UserForm.get('lastname').invalid && UserForm.get('lastname').touched">
+        <small *ngIf="UserForm.get('lastname').errors ?. required" class="text-danger">last name is required</small>
+       
+       </div>
+        </div>
+      </div>
+      <div class="contact">
+        <div>
+          <label><b>Email*</b></label>
+          <input  [class.is-invalid]="UserForm.get('email').invalid && UserForm.get('email').touched"type="email" class="form-control" formControlName="email" placeholder="abc@gmail.com">
+          <small [class.d-none]="UserForm.get('email').valid || UserForm.get('email').untouched" class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;*Emailid is required</small>
+        </div>
+        <div>
+          <label><b>Phone*</b></label>
+          <input [class.is-invalid] = "UserForm.get('phone').invalid && UserForm.get('phone').touched"type="tel" class="form-control" formControlName="phone">
+          <small [class.d-none]="UserForm.get('phone').valid || UserForm.get('phone').untouched" class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;*Phone number is required</small>
+        </div>
+        <div>
+          <label><b>Address*</b></label>
+          <div class="row">
+            <div class="add">
+            <div class="col-xs-4">
+         &nbsp;&nbsp;&nbsp; <label><b>City</b></label>
+        <input [class.is-invalid] = "UserForm.get('city').invalid && UserForm.get('city').touched"class="form-control" formControlName="city">
+        <div *ngIf="UserForm.get('city').invalid && UserForm.get('city').touched">
+          <small *ngIf="UserForm.get('city').errors ?. required" class="text-danger">city is required</small>
+          <small *ngIf="UserForm.get('city').errors ?. minlength" class="text-danger">minimum 4 alphabets</small>
+         </div>
+      </div></div>&nbsp;&nbsp;
+        <div class="add">
+            <div class="col-xs-4">
+          <label><b>State</b></label>
+          <select [class.is-invalid] = "UserForm.get('state').invalid && UserForm.get('state').touched"class="form-control" formControlName="state">
+            <option selected> Maharashtra </option>
+            <option>Gujrat</option>
+            <option>Uttar Praesh</option>
+          </select>
+          <small [class.d-none]="UserForm.get('state').valid || UserForm.get('state').untouched" class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;*State is required</small>
+        </div></div>&nbsp;&nbsp;
+            <div class="add">
+            <div class="col-xs-4">
+          <label><b>Zip Code</b></label>
+          <input [class.is-invalid] = "UserForm.get('zipcode').invalid && UserForm.get('zipcode').touched"class="form-control" formControlName="zipcode">
+          <div *ngIf="UserForm.get('zipcode').invalid && UserForm.get('zipcode').touched">
+            <small *ngIf="UserForm.get('zipcode').errors ?. required" class="text-danger">zipcode is required</small>
+            
+           </div>
+        </div>
+        </div>
+      </div>
+        </div><br>
+        <div>
+        <button style="margin-left: 300px;" type="submit" class="btn btn-danger">SUBMIT FORM</button>
+        </div>
+      </div>
+    </div>
+  </form>
+<!--{{UserForm.value | json}}-->
+</div>
+
+ 
